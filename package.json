@@ -1,0 +1,41 @@
+{
+  "name": "webhook-boilerplate",
+  "version": "v1.0.0",
+  "description": "This framework built in Node.js makes it simple to create webhook for dialogflow agent by creating a file for a particular intent in the intents library.",
+  "author": "Quantiphi Inc.",
+  "email": "support.qonversationalai@quantiphi.com",
+  "license": "Apache-2.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Quantiphi/webhook-boilerplate/"
+  },
+  "issues": {
+    "url": "https://github.com/Quantiphi/webhook-boilerplate/issues"
+  },
+  "homepage": "https://github.com/Quantiphi/webhook-boilerplate#readme",
+  "dependencies": {
+    "dialogflow-fulfillment": "Quantiphi/dialogflow-fulfillment-builder",
+    "dialogflow-fulfillment-builder": "github:Quantiphi/dialogflow-fulfillment-builder",
+    "express": "^4.16.3",
+    "express-winston": "^4.0.1",
+    "helmet": "^3.21.2",
+    "semver": "^7.3.2",
+    "winston": "^3.0.0"
+  },
+  "keywords": [
+    "webhook framework",
+    "dialogflow webhook",
+    "virtual agent",
+    "boilerplate",
+    "dialogflow boilerplate",
+    "fulfillment service"
+  ]
+}
