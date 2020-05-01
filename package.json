@@ -2,7 +2,7 @@
   "name": "webhook-boilerplate",
   "version": "v1.0.0",
   "description": "This framework built in Node.js makes it simple to create webhook for dialogflow agent by creating a file for a particular intent in the intents library.",
-  "author": "Quantiphi Inc.",
+  "author": "Quantiphi, Inc.",
   "email": "support.qonversationalai@quantiphi.com",
   "license": "Apache-2.0",
   "main": "server.js",
