@@ -24,7 +24,7 @@
  * @param {function} next invokes the succeeding middleware/function
  */
 
-const errorHandler = (err, req, res, next) => {
+export const errorHandler = (err, req, res, next) => {
     let enviroment = process.env.NODE_ENV || "development";
     let errObj = {};
     let status = err.status || 500;
@@ -39,5 +39,3 @@ const errorHandler = (err, req, res, next) => {
     errObj["message"] = err.message || "Internal server error.";
     res.status(status).json(errObj);
 };
-
-module.exports = errorHandler;

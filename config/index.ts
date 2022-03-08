@@ -1,5 +1,5 @@
 /**
- * Copyright 2020 Quantiphi, Inc. All Rights Reserved.
+ * Copyright 2020 Quantiphi Inc. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,12 +17,21 @@
 "use strict";
 
 /**
- * Default Welcome Intent controller
- * @param {object} df webhook fulfillment object
+ * Configures the application based on the NODE_ENV eg: "production, qa and develop"
+ * return application configurations   
  */
 
-const defaultWelcomeIntent = async (df) =>{
-    df.setResponseText("Hi Welcome to Quantiphi Virtual Assistant! How can I help you today?");
+export const Config = {
+    "port": process.env.PORT || 3000,
+    "fullfillmentConfig": {
+        "platformsEnabled": ["TEXT", "ACTIONS_ON_GOOGLE"]
+    },
+    "auth": {
+        "enable": false,
+        "username": process.env.USER_NAME,
+        "password": process.env.PASSWORD
+    },
+    "logger": {
+        "piiFields": []
+    }
 };
-
-module.exports = defaultWelcomeIntent;

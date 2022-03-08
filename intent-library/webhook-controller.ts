@@ -16,9 +16,15 @@
 
 "use strict";
 
-const dialogflowFullfillment = require("dialogflow-fulfillment-builder");
-const config = require("./../config")();
-const intentMapper = require("./intent-mapper");
+import * as dialogflowFullfillment from "dialogflow-fulfillment-builder";
+import { Config } from "./../config";
+import { intentMapper } from "./intent-mapper";
+
+const getIntent = (name) => {
+    let file = name.toLowerCase();
+    file = file.replace(/ +/g, "-");
+    return `./intents/${file}`;
+};
 
 /**
  * Dialogflow fullfillment controller
@@ -26,11 +32,10 @@ const intentMapper = require("./intent-mapper");
  * @param {object} res http response
  * @param {function} next invokes the succeeding middleware/function
  */
-
-module.exports = async (req, res, next) => {
+export const webhookController = async (req, res, next) => {
     try {
         const requestIntent = req.body.queryResult.intent.displayName;
-        let fulfillment = new dialogflowFullfillment(config.fullfillmentConfig, req.body);
+        let fulfillment = new dialogflowFullfillment(Config.fullfillmentConfig, req.body);
         if (intentMapper[requestIntent]) {
             await intentMapper[requestIntent](fulfillment);
         } else {
@@ -42,10 +47,4 @@ module.exports = async (req, res, next) => {
     } catch (err) {
         next(err);
     }
-};
-
-const getIntent = (name) => {
-    let file = name.toLowerCase();
-    file = file.replace(/ +/g, "-");
-    return `./intents/${file}`;
-};
+}

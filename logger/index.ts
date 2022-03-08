@@ -15,8 +15,7 @@
  */
 
 "use strict";
-
-const winston = require("winston");
+import * as winston from "winston";
 
 /**
  * 
@@ -26,7 +25,7 @@ const winston = require("winston");
  * @param {*} data log details if any
  */
 
-const log = (level, message, label, data) => {
+export const log = (level, message, label, data) => {
     let options = {
         console: {
             level: "debug",// Log only if level less than or equal to this level
@@ -49,16 +48,12 @@ const log = (level, message, label, data) => {
         exitOnError: false // do not exit on handled exceptions
     });
 	
-    // create a stream object with a 'write' function that will be used by `morgan`
-    logger.stream = {
-        write: function (msg) {
-            logger.info(msg);
-        }
-    };
+    // TODO : create a stream object with a 'write' function that will be used by `morgan`
+    // logger.stream = {
+    //     write: function (msg) {
+    //         logger.info(msg);
+    //     }
+    // };
 
     logger.log(level, message, { logDetails: data });
-};
-
-module.exports = {
-    log
 };

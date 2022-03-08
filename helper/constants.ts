@@ -17,11 +17,7 @@
 "use strict";
 
 /**
- * Maps dialogflow intent with its controller
+ * Application Constants to be defined here
  */
 
-const intents = {
-    "Default Welcome Intent": require("./intents/default-welcome-intent")
-};
-
-module.exports = intents;
+// export const name = "value";
