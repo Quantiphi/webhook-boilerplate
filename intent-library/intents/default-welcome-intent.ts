@@ -16,17 +16,12 @@
 
 "use strict";
 
-const app = require("./app");
-const http = require("http");
-const logger = require("./logger");
-const config = require("./config")();
+/**
+ * Default Welcome Intent controller
+ * @param {object} df webhook fulfillment object
+ */
 
-const server = http.createServer(app);
+export const defaultWelcomeIntent = async (df) =>{
+    df.setResponseText("Hi Welcome to Quantiphi Virtual Assistant! How can I help you today?");
+};
 
-server.listen(config.port, (err) => {
-    if (err) {
-        logger.log("error", "Server error", null, { "message": err });
-    } else {
-        logger.log("info", `server running at  ${config.port}`, null);
-    }
-});

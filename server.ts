@@ -16,10 +16,21 @@
 
 "use strict";
 
-/**
- * Application Constants to be defined here
- */
+import { app } from "./app";
+import * as http from "http";
+import { log } from "./logger";
+import { Config } from "./config";
 
-module.exports = {
+const server = http.createServer(app);
 
-};
+server.listen(Config.port, () => {
+    console.log(`server running at  ${Config.port}`);
+    log("info", `server running at  ${Config.port}`, null, null);
+});
+
+server.on('error', (err) => {
+    if (err) {
+        log("error", "Server error", null, { "message": err });
+    }
+    throw err;
+});
